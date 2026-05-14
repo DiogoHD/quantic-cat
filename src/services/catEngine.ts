@@ -1,12 +1,16 @@
+import type { Position } from "../types/position";
 
-
-export function computeCatPosition(startPosition: number, lines: string[]): number {
-  let pos = startPosition;
+export function computeCatPosition(startPosition: Position, lines: string[]): Position {
+  let x = startPosition[0], y = startPosition[1];
 
   for (const line of lines) {
-    if (line === "qc.id('cat')") pos += 1;
-    // if (line === "qc.x(0)") pos += cols;
+    if (line === "qc.id('cat')") x += 1;
+    if (line === "qc.x('cat')") {
+      y = y === 0 ? 1 : 0;
+      x += 1;
+    }
+
   }
 
-  return pos;
+  return [x, y];
 }

@@ -3,6 +3,7 @@ import Level from "./components/level"
 import { useState } from "react";
 import mapData from "./data/map.json";
 import { computeCatPosition } from "./services/catEngine";
+import type { Position } from "./types/position";
 
 export default function App() {
   const [ current, setCurrent ] = useState(0);
@@ -25,8 +26,8 @@ export default function App() {
         <Map 
           rows={levelMap.rows} 
           cols={levelMap.cols} 
-          catPosition={computeCatPosition(levelMap.catPosition, lines)} 
-          fishPosition={levelMap.fishPosition} />
+          catPosition={computeCatPosition(levelMap.catPosition as Position, lines)} 
+          fishPosition={levelMap.fishPosition as Position} />
       </div>
     </div>
   )

@@ -1,16 +1,10 @@
 import { descriptions } from "../data/descriptions";
+import type { LevelProps } from "../types/level";
 
 const descriptionsWithTitles = descriptions.map((level, _, arr) => ({
   ...level,
   title: `Nível ${level.id} de ${arr.length}`,
 }));
-
-interface LevelProps {
-  current: number;
-  setCurrent: (current: number) => void;
-  code: string;
-  setCode: (code: string) => void;
-}
 
 export default function Level({ current, setCurrent, code, setCode }: LevelProps) {
   const level = descriptionsWithTitles[current];
