@@ -19,6 +19,8 @@ export function Map({ cols, catPosition, fishPosition, hasWon }: MapProps) {
 
   return (
     <div className="flex flex-col">
+
+      {/* Victory Message */}
       {hasWon && (
         <div className="mt-4 animate-bounce">
           <div className="bg-green-500/20 border-2 border-green-400 text-green-100 px-6 py-4 rounded-2xl">

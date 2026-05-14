@@ -23,7 +23,14 @@ export default function App() {
       </div>
 
       {/* Right Side */}
-      <div className="flex flex-1 bg-gray-800 items-center justify-center">
+      <div className="flex flex-1 flex-col bg-gray-800 items-center justify-center">
+        {/* Title */}
+        <div className="mb-6 text-center">
+          <p className="text-3xl font-black tracking-[0.2em] uppercase text-amber-400">
+            {levelMap.title}
+          </p>
+        </div>
+
         <Map 
           cols={levelMap.cols} 
           catPosition={catPosition} 
