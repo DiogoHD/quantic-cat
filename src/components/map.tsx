@@ -33,31 +33,32 @@ export function Map({ cols, catPosition, fishPosition, hasWon }: MapProps) {
         </div>
       )}
 
-      <div className="flex flex-row">
+      <div className="flex flex-row rounded-xl overflow-hidden shadow-xl border border-amber-900/40 bg-amber-950/20">
+        
         {/* Qubit Name */}
-        <div className="flex border-8 border-r-0 border-amber-800 w-20">
-          <p className="flex items-center justify-center text-lg font-bold uppercase text-center w-full h-full border-2 border-white">
+        <div className="w-24 bg-amber-900/40 flex items-center justify-center border-r border-amber-800/50">
+          <p className="text-sm font-bold uppercase tracking-widest text-amber-100">
             Cat 0
           </p>
         </div>
 
         {/* Qubit State */}
-        <div className="grid grid-cols-1 grid-rows-2 items-center border-8 border-x-0 border-amber-800 w-20">
-          <div className="flex h-full w-full border-2 border-white items-center justify-center">
-            <p className="text-sm font-bold uppercase text-center">
-              |0{'>'}
+        <div className="w-24 flex flex-col border-r border-amber-800/50 bg-amber-950/30">
+          <div className="flex-1 flex items-center justify-center border-b border-amber-800/30">
+            <p className="text-sm font-mono text-amber-100">
+              |0⟩
             </p>
           </div>
-          <div className="flex h-full w-full border-2 border-white items-center justify-center">
-            <p className="text-sm font-bold uppercase text-center">
-              |1{'>'}
+          <div className="flex-1 flex items-center justify-center">
+            <p className="text-sm font-mono text-amber-100">
+              |1⟩
             </p>
           </div>
         </div>
 
         {/* Grid container */}
-        <div 
-          className={`grid grid-rows-2 border-8 border-amber-800`} 
+        <div
+          className="grid border-l border-amber-800/50 bg-amber-950/10"
           style={{
             gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))`,
           }}
