@@ -6,7 +6,6 @@ export interface CellProps {
 }
 
 export interface MapProps {
-  rows: number;
   cols: number;
   catPosition: Position;
   fishPosition: Position;

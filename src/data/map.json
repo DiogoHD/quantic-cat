@@ -1,23 +1,23 @@
 [
     {
         "level": 1,
+        "catNumber": 1,
         "catPosition": [0, 0],
         "fishPosition": [3, 0],
-        "rows": 2,
         "cols": 4
     },
     {
         "level": 2,
+        "catNumber": 1,
         "catPosition": [0, 1],
         "fishPosition": [5, 1],
-        "rows": 3,
         "cols": 6
     },
     {
         "level": 3,
+        "catNumber": 1,
         "catPosition": [2, 2],
         "fishPosition": [7, 2],
-        "rows": 4,
         "cols": 8
     }
 ]

@@ -6,7 +6,7 @@ const descriptionsWithTitles = descriptions.map((level, _, arr) => ({
   title: `Nível ${level.id} de ${arr.length}`,
 }));
 
-export default function Level({ current, setCurrent, code, setCode, hasWon }: LevelProps) {
+export function Level({ current, setCurrent, code, setCode, hasWon }: LevelProps) {
   const level = descriptionsWithTitles[current];
 
   return (
