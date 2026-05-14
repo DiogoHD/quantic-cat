@@ -21,7 +21,7 @@ export function Map({ cols, catPosition, fishPosition, hasWon }: MapProps) {
     <div className="flex flex-col">
       {hasWon && (
         <div className="mt-4 animate-bounce">
-          <div className="bg-green-500/20 border-2 border-green-400 text-green-100 px-6 py-4 rounded-2xl shadow-xl backdrop-blur-sm">
+          <div className="bg-green-500/20 border-2 border-green-400 text-green-100 px-6 py-4 rounded-2xl">
             <p className="text-2xl font-extrabold text-center tracking-wide">
               🎉 Vitória!
             </p>
@@ -65,7 +65,7 @@ export function Map({ cols, catPosition, fishPosition, hasWon }: MapProps) {
         >
           {Array.from({ length: cols * 2 }, (_, i) => (
             <Cell key={i} index={i}>
-              {i === catIndex && <Cat />}
+              {i === catIndex && <Cat type="red" />}
               {i === fishIndex && <Fish />}
             </Cell>
           ))}

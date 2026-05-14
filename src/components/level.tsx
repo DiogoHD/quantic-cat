@@ -42,8 +42,8 @@ export function Level({ current, setCurrent, code, setCode, hasWon }: LevelProps
       </div>
 
       {/* Code editor */}
-      <div className="px-6 py-4">
-        <div className="bg-[#1f180f] border border-amber-900 rounded-sm">
+      <div className="flex flex-1 px-6 py-4">
+        <div className="w-full bg-[#1f180f] border border-amber-900 rounded-sm">
           {/* Editor header */}
           <div className="flex items-center gap-1.5 px-3 py-2 border-b border-amber-900/60 bg-[#0c190c]">
             <span className="text-xs">Python</span>
@@ -61,7 +61,7 @@ export function Level({ current, setCurrent, code, setCode, hasWon }: LevelProps
             <textarea
               value={code}
               onChange={(e) => setCode(e.target.value)}
-              className="flex-1 bg-transparent outline-none resize-none text-amber-300 text-sm leading-6 placeholder:text-amber-800 caret-amber-400"
+              className="flex-1 h bg-transparent outline-none resize-none text-amber-300 text-sm leading-6 placeholder:text-amber-800 caret-amber-400"
               rows={3}
               placeholder="qc.id(0)"
               spellCheck={false}

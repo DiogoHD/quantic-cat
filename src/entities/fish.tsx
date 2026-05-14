@@ -1,7 +1,7 @@
+import fish from "../assets/fish.png"
+
 export default function Fish() {
   return (
-    <div className="text-2xl">
-      🐟
-    </div>
+    <img src={fish} alt="Fish" className="w-full h-full" />
   )
 }

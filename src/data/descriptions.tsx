@@ -9,7 +9,6 @@ export const descriptions = [
         </p>
         <p>
           O objetivo é usar os gates para levar o gato até o peixe, que está na última coluna do mapa. 
-          Mas cuidado: o gato só pode estar em uma das duas linhas do mapa, e alguns gates podem mudar a linha do gato!
         </p>
         <p>
           O comando {" "}

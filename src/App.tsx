@@ -16,14 +16,14 @@ export default function App() {
   const hasWon = isCatAtFish(catPosition, levelMap.fishPosition as Position);
 
   return (
-    <div className="h-screen w-screen flex bg-orange-500 text-white">
+    <div className="min-h-screen w-screen flex text-white overflow-y-auto">
       {/* Left Side */}
       <div className="flex flex-1 bg-amber-200 items-center justify-center">
         <Level current={current} setCurrent={setCurrent} code={code} setCode={setCode} hasWon={hasWon} />
       </div>
 
       {/* Right Side */}
-      <div className="flex-1 bg-gray-800 flex items-center justify-center">
+      <div className="flex flex-1 bg-gray-800 items-center justify-center">
         <Map 
           cols={levelMap.cols} 
           catPosition={catPosition} 
