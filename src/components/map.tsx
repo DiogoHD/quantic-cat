@@ -18,8 +18,6 @@ export default function Map({ rows, cols, catPosition, fishPosition }: MapProps)
 
   const catIndex = catPosition[1] * cols + catPosition[0];
   const fishIndex = fishPosition[1] * cols + fishPosition[0];
-  
-  console.log("Cat position:", catPosition, "Fish position:", fishPosition);
 
   return (
     <div

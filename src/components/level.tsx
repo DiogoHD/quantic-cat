@@ -6,7 +6,7 @@ const descriptionsWithTitles = descriptions.map((level, _, arr) => ({
   title: `Nível ${level.id} de ${arr.length}`,
 }));
 
-export default function Level({ current, setCurrent, code, setCode }: LevelProps) {
+export default function Level({ current, setCurrent, code, setCode, hasWon }: LevelProps) {
   const level = descriptionsWithTitles[current];
 
   return (
@@ -82,7 +82,7 @@ export default function Level({ current, setCurrent, code, setCode }: LevelProps
 
         <button
           onClick={() => { setCurrent(Math.min(descriptionsWithTitles.length - 1, current + 1)); setCode(""); }}
-          disabled={current === descriptionsWithTitles.length - 1}
+          disabled={current === descriptionsWithTitles.length - 1 || !hasWon}
           className="flex-1 py-2 text-xs uppercase tracking-widest bg-amber-700 hover:bg-amber-600 disabled:opacity-20 disabled:cursor-not-allowed transition-colors rounded-sm font-bold hover:cursor-pointer"
         >
           Próximo Nível →

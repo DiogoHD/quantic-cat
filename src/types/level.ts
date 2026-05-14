@@ -3,4 +3,5 @@ export interface LevelProps {
   setCurrent: (current: number) => void;
   code: string;
   setCode: (code: string) => void;
+  hasWon: boolean;
 }
