@@ -1,40 +1,19 @@
-import { useState } from "react";
+import { descriptions } from "../data/descriptions";
 
-const levels = [
-  {
-    id: 1,
-    title: "Nível 1 de 24",
-    description: (
-      <>
-        Ajuda o gato a chegar ao peixe usando a porta identidade{" "}
-        <code>
-          qc.id('cat');
-        </code>
-        , que apesar de, na física quântica não fazer nada, aqui faz o gato avançar 1 casa no mapa.
-      </>
-    ),
-  },
-  {
-    id: 2,
-    title: "Nível 2 de 24",
-    description: (
-      <>
-        Usa {" "}
-        <code className="px-1 py-0.5 rounded text-sm font-mono">
-          qc.x(0)
-        </code>
-        {" "} para mudar o gato de linha.
-        O operador X é como um interruptor que inverte o estado do gato: se ele estiver na linha de cima, ele vai para a linha de baixo, e vice-versa. Use isso para ajudar o gato a chegar ao peixe!
-      </>
-    ),
-  },
-];
+const descriptionsWithTitles = descriptions.map((level, _, arr) => ({
+  ...level,
+  title: `Nível ${level.id} de ${arr.length}`,
+}));
 
-export default function Level() {
-  const [current, setCurrent] = useState(0);
-  const [code, setCode] = useState("");
+interface LevelProps {
+  current: number;
+  setCurrent: (current: number) => void;
+  code: string;
+  setCode: (code: string) => void;
+}
 
-  const level = levels[current];
+export default function Level({ current, setCurrent, code, setCode }: LevelProps) {
+  const level = descriptionsWithTitles[current];
 
   return (
     <div className="h-screen w-full flex flex-col bg-amber-600/70 text-white font-mono">
@@ -44,7 +23,7 @@ export default function Level() {
         Quantic Cat
         </span>
         <span className="">
-          {level.id}/{levels.length}
+          {level.id}/{descriptionsWithTitles.length}
         </span>
       </div>
 
@@ -52,7 +31,7 @@ export default function Level() {
       <div className="h-1 bg-amber-800">
         <div
           className="h-full bg-amber-500 transition-all duration-500"
-          style={{ width: `${(level.id / levels.length) * 100}%` }}
+          style={{ width: `${(level.id / descriptionsWithTitles.length) * 100}%` }}
         />
       </div>
 
@@ -100,17 +79,17 @@ export default function Level() {
       {/* Navigation */}
       <div className="px-6 pb-6 flex items-center justify-between gap-3">
         <button
-          onClick={() => { setCurrent((c) => Math.max(0, c - 1)); setCode(""); }}
+          onClick={() => { setCurrent(Math.max(0, current - 1)); setCode(""); }}
           disabled={current === 0}
-          className="px-4 py-2 text-xs uppercase tracking-widest border border-amber-800 hover:bg-amber-900/40 disabled:opacity-20 disabled:cursor-not-allowed transition-colors rounded-sm"
+          className="px-4 py-2 text-xs uppercase tracking-widest border border-amber-800 hover:bg-amber-900/40 disabled:opacity-20 disabled:cursor-not-allowed transition-colors rounded-sm hover:cursor-pointer"
         >
           ← Anterior
         </button>
 
         <button
-          onClick={() => { setCurrent((c) => Math.min(levels.length - 1, c + 1)); setCode(""); }}
-          disabled={current === levels.length - 1}
-          className="flex-1 py-2 text-xs uppercase tracking-widest bg-amber-700 hover:bg-amber-600 disabled:opacity-20 disabled:cursor-not-allowed transition-colors rounded-sm font-bold"
+          onClick={() => { setCurrent(Math.min(descriptionsWithTitles.length - 1, current + 1)); setCode(""); }}
+          disabled={current === descriptionsWithTitles.length - 1}
+          className="flex-1 py-2 text-xs uppercase tracking-widest bg-amber-700 hover:bg-amber-600 disabled:opacity-20 disabled:cursor-not-allowed transition-colors rounded-sm font-bold hover:cursor-pointer"
         >
           Próximo Nível →
         </button>

@@ -1,0 +1,23 @@
+[
+    {
+        "level": 1,
+        "catPosition": 1,
+        "fishPosition": 3,
+        "rows": 2,
+        "cols": 4
+    },
+    {
+        "level": 2,
+        "catPosition": 0,
+        "fishPosition": 5,
+        "rows": 3,
+        "cols": 6
+    },
+    {
+        "level": 3,
+        "catPosition": 2,
+        "fishPosition": 7,
+        "rows": 4,
+        "cols": 8
+    }
+]
