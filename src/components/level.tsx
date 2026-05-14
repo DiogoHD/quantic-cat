@@ -3,7 +3,7 @@ import type { LevelProps } from "../types/level";
 
 const descriptionsWithTitles = descriptions.map((level, _, arr) => ({
   ...level,
-  title: `Nível ${level.id} de ${arr.length}`,
+  title: `Nível ${level.level} de ${arr.length}`,
 }));
 
 export function Level({ current, setCurrent, code, setCode, hasWon }: LevelProps) {
@@ -17,7 +17,7 @@ export function Level({ current, setCurrent, code, setCode, hasWon }: LevelProps
         Quantic Cat
         </span>
         <span className="">
-          {level.id}/{descriptionsWithTitles.length}
+          {level.level}/{descriptionsWithTitles.length}
         </span>
       </div>
 
@@ -25,7 +25,7 @@ export function Level({ current, setCurrent, code, setCode, hasWon }: LevelProps
       <div className="h-1 bg-amber-800">
         <div
           className="h-full bg-amber-500 transition-all duration-500"
-          style={{ width: `${(level.id / descriptionsWithTitles.length) * 100}%` }}
+          style={{ width: `${(level.level / descriptionsWithTitles.length) * 100}%` }}
         />
       </div>
 

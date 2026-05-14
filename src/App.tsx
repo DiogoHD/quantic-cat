@@ -27,7 +27,9 @@ export default function App() {
         <Map 
           cols={levelMap.cols} 
           catPosition={catPosition} 
-          fishPosition={levelMap.fishPosition as Position} />
+          fishPosition={levelMap.fishPosition as Position} 
+          hasWon={hasWon} 
+        />
       </div>
     </div>
   )

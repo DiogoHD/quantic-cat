@@ -1,23 +1,23 @@
 [
     {
         "level": 1,
-        "catNumber": 1,
+        "numberOfCats": 1,
         "catPosition": [0, 0],
-        "fishPosition": [3, 0],
-        "cols": 4
+        "fishPosition": [1, 0],
+        "cols": 2
     },
     {
         "level": 2,
-        "catNumber": 1,
-        "catPosition": [0, 1],
-        "fishPosition": [5, 1],
-        "cols": 6
+        "numberOfCats": 1,
+        "catPosition": [0, 0],
+        "fishPosition": [1, 1],
+        "cols": 2
     },
     {
         "level": 3,
-        "catNumber": 1,
-        "catPosition": [2, 2],
-        "fishPosition": [7, 2],
-        "cols": 8
+        "numberOfCats": 1,
+        "catPosition": [0, 0],
+        "fishPosition": [3, 1],
+        "cols": 4
     }
 ]

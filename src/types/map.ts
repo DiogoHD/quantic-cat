@@ -9,4 +9,5 @@ export interface MapProps {
   cols: number;
   catPosition: Position;
   fishPosition: Position;
+  hasWon: boolean;
 }
