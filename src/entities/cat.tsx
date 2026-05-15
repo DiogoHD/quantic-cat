@@ -6,11 +6,12 @@ import pink_cat from "../assets/cats/pink-cat.png"
 import ghost_cat from "../assets/cats/ghost-cat.png"
 import yellow_cat from "../assets/cats/yellow-cat.png"
 import red_cat from "../assets/cats/red-cat.png"
+import grey_cat from "../assets/cats/grey-cat.png"
 
-type CatType = "orange" | "black" | "white" | "brown" | "pink" | "yellow" | "red" | "ghost";
+type CatType = "orange" | "black" | "white" | "brown" | "pink" | "yellow" | "red" | "grey" | "ghost";
 
 
-export default function Cat({ type }: { type: CatType }) {
+export function Cat({ type }: { type: CatType }) {
   let catImage;
   
   switch (type) {
@@ -37,6 +38,9 @@ export default function Cat({ type }: { type: CatType }) {
       break;
     case "red":
       catImage = red_cat;
+      break;
+    case "grey":
+      catImage = grey_cat;
       break;
     default:
       catImage = orange_cat;

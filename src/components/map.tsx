@@ -1,5 +1,4 @@
-import Cat from "../entities/cat"
-import Fish from "../entities/fish"
+import { Cat, OpenBox, ClosedBox } from "../entities"
 import type { CellProps, MapProps } from "../types/map"
 
 function Cell({ index, children }: CellProps) {
@@ -15,7 +14,7 @@ function Cell({ index, children }: CellProps) {
 
 export function Map({ cols, catPosition, fishPosition, hasWon }: MapProps) {
   const catIndex = catPosition[1] * cols + catPosition[0];
-  const fishIndex = fishPosition[1] * cols + fishPosition[0];
+  const boxIndex = fishPosition[1] * cols + fishPosition[0];
 
   return (
     <div className="flex flex-col">
@@ -29,7 +28,7 @@ export function Map({ cols, catPosition, fishPosition, hasWon }: MapProps) {
             </p>
 
             <p className="text-center mt-2 text-lg">
-              O gato alcançou o peixe! 🐱🐟
+              O gato entrou na caixa! 🐱📦
             </p>
           </div>
         </div>
@@ -67,8 +66,14 @@ export function Map({ cols, catPosition, fishPosition, hasWon }: MapProps) {
         >
           {Array.from({ length: cols * 2 }, (_, i) => (
             <Cell key={i} index={i}>
-              {i === catIndex && <Cat type="red" />}
-              {i === fishIndex && <Fish />}
+              {i === catIndex && i === boxIndex ? (
+                <ClosedBox />
+              ) : (
+                <>
+                  {i === catIndex && <Cat type="orange" />}
+                  {i === boxIndex && <OpenBox />}
+                </>
+              )}
             </Cell>
           ))}
         </div>

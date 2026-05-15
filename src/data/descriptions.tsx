@@ -8,14 +8,14 @@ export const descriptions = [
           Além disso, todos os gates movem o gato para a direita, ou seja, eles avançam o gato uma coluna no mapa.
         </p>
         <p>
-          O objetivo é usar os gates para levar o gato até o peixe, que está na última coluna do mapa. 
+          O objetivo é usar os gates para levar o gato até a caixa, que está na última coluna do mapa. 
         </p>
         <p>
           O comando {" "}
           <code className="px-1 py-0.5 rounded text-sm font-mono">
             qc.id(0)
           </code>
-          {" "} é um gate de identidade, ou seja, ele não altera o estado do qubit. No entanto, ele ainda move o gato para a direita! Use isso para ajudar o gato a chegar ao peixe!
+          {" "} é um gate de identidade, ou seja, ele não altera o estado do qubit. No entanto, ele ainda move o gato para a direita! Use isso para ajudar o gato a entrar na caixa!
         </p>
       </>
     ),
