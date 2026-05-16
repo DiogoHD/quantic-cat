@@ -1,6 +1,10 @@
-export const descriptions = [
+export const levels = [
   {
     level: 1,
+    title: "A identidade do gato",
+    catPositions: [[0, 0]],
+    boxPositions: [[1, 0]],
+    cols: 2,
     description: (
       <>
         <p>
@@ -22,6 +26,10 @@ export const descriptions = [
   },
   {
     level: 2,
+    title: "O gato troca de caminhos",
+    catPositions: [[0, 0]],
+    boxPositions: [[1, 1]],
+    cols: 2,
     description: (
       <>
         <p>
@@ -43,6 +51,10 @@ export const descriptions = [
   },
   {
     level: 3,
+    title: "O peixe está cada vez mais longe",
+    catPositions: [[0, 0]],
+    boxPositions: [[3, 1]],
+    cols: 4,
     description: (
       <>
         <p>
@@ -56,6 +68,10 @@ export const descriptions = [
   },
   {
     level: 4,
+    title: "1 gato, 2 caixas",
+    catPositions: [[0, 0]],
+    boxPositions: [[2, 0], [2, 1]],
+    cols: 3,
     description: (
       <>
         <p> Neste nível, o objetivo é levar o gato para as duas caixas. Para isso, vais precisar usar os gates de forma estratégica para garantir que o gato entre em ambas as caixas. </p>

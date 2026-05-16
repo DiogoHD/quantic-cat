@@ -1,15 +1,15 @@
 import { Map } from "./components/map"
-import { Level } from "./components/level"
+import { Description } from "./components/description"
 import { useState } from "react";
-import mapData from "./data/map.json";
 import { computeCatPosition, isCatAtBox } from "./services/catEngine";
 import type { Position } from "./types/position";
+import { levels } from "./data/levels";
 
 export default function App() {
   const [ current, setCurrent ] = useState(0);
   const [ code, setCode ] = useState("");
 
-  const levelMap = mapData[current];
+  const levelMap = levels[current];
   const lines = code.split("\n").map(line => line.trim()).filter(line => line.length > 0);
 
   const catPositions = computeCatPosition(levelMap.catPositions as Position[], levelMap.cols, lines);
@@ -19,7 +19,7 @@ export default function App() {
     <div className="min-h-screen w-screen flex text-white overflow-y-auto">
       {/* Left Side */}
       <div className="flex flex-1 bg-amber-200 items-center justify-center">
-        <Level current={current} setCurrent={setCurrent} code={code} setCode={setCode} hasWon={hasWon} />
+        <Description current={current} setCurrent={setCurrent} code={code} setCode={setCode} hasWon={hasWon} />
       </div>
 
       {/* Right Side */}

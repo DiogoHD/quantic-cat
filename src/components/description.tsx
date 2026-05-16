@@ -1,13 +1,13 @@
-import { descriptions } from "../data/descriptions";
+import { levels } from "../data/levels";
 import type { LevelProps } from "../types/level";
 
-const descriptionsWithTitles = descriptions.map((level, _, arr) => ({
+const levelsWithTitles = levels.map((level, _, arr) => ({
   ...level,
   title: `Nível ${level.level} de ${arr.length}`,
 }));
 
-export function Level({ current, setCurrent, code, setCode, hasWon }: LevelProps) {
-  const level = descriptionsWithTitles[current];
+export function Description({ current, setCurrent, code, setCode, hasWon }: LevelProps) {
+  const level = levelsWithTitles[current];
 
   return (
     <div className="h-screen w-full flex flex-col bg-amber-600/70 text-white font-mono">
@@ -17,7 +17,7 @@ export function Level({ current, setCurrent, code, setCode, hasWon }: LevelProps
         Quantic Cat
         </span>
         <span className="">
-          {level.level}/{descriptionsWithTitles.length}
+          {level.level}/{levelsWithTitles.length}
         </span>
       </div>
 
@@ -25,7 +25,7 @@ export function Level({ current, setCurrent, code, setCode, hasWon }: LevelProps
       <div className="h-1 bg-amber-800">
         <div
           className="h-full bg-amber-500 transition-all duration-500"
-          style={{ width: `${(level.level / descriptionsWithTitles.length) * 100}%` }}
+          style={{ width: `${(level.level / levelsWithTitles.length) * 100}%` }}
         />
       </div>
 
@@ -81,8 +81,8 @@ export function Level({ current, setCurrent, code, setCode, hasWon }: LevelProps
         </button>
 
         <button
-          onClick={() => { setCurrent(Math.min(descriptionsWithTitles.length - 1, current + 1)); setCode(""); }}
-          disabled={current === descriptionsWithTitles.length - 1 || !hasWon}
+          onClick={() => { setCurrent(Math.min(levelsWithTitles.length - 1, current + 1)); setCode(""); }}
+          disabled={current === levelsWithTitles.length - 1 || !hasWon}
           className="flex-1 py-2 text-xs uppercase tracking-widest bg-amber-700 hover:bg-amber-600 disabled:opacity-20 disabled:cursor-not-allowed transition-colors rounded-sm font-bold hover:cursor-pointer"
         >
           Próximo Nível →
