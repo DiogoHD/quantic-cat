@@ -1,6 +1,6 @@
 import { Map } from "./components/map"
 import { Description } from "./components/description"
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { computeCatPosition, isCatAtBox } from "./services/catEngine";
 import type { Position } from "./types/position";
 import { levels } from "./data/levels";
@@ -8,6 +8,8 @@ import { levels } from "./data/levels";
 export default function App() {
   const [ current, setCurrent ] = useState(0);
   const [ code, setCode ] = useState("");
+  // Track completed levels
+  const [completed, setCompleted] = useState<boolean[]>(() => levels.map(() => false));
 
   const levelMap = levels[current];
   const lines = code.split("\n").map(line => line.trim()).filter(line => line.length > 0);
@@ -15,11 +17,22 @@ export default function App() {
   const catPositions = computeCatPosition(levelMap.catPositions as Position[], levelMap.cols, lines);
   const hasWon = isCatAtBox(catPositions, levelMap.boxPositions as Position[]);
 
+  useEffect(() => {
+    if (hasWon) {
+      setCompleted(prev => {
+        const next = [...prev];
+        next[current] = true;
+        return next;
+      });
+    }
+  }, [hasWon, current]);
+
+
   return (
     <div className="min-h-screen w-screen flex text-white overflow-y-auto">
       {/* Left Side */}
       <div className="flex flex-1 bg-amber-200 items-center justify-center">
-        <Description current={current} setCurrent={setCurrent} code={code} setCode={setCode} hasWon={hasWon} />
+        <Description current={current} setCurrent={setCurrent} code={code} setCode={setCode} completed={completed} />
       </div>
 
       {/* Right Side */}

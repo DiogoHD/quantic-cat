@@ -8,21 +8,29 @@ export function computeCatPosition(startPositions: Position[], cols: number, lin
       // Gate ID
       // Moves t\he cat to the right
       if (line === "qc.id(0)") {
+        console.log("Applying ID gate to cat at", [x, y]);
         return [clamp([x + 1, y], cols)];
       }
 
       // Gate X
       // Moves the cat to the right and changes the row
       if (line === "qc.x(0)") {
+        console.log("Applying X gate to cat at", [x, y]);
          return [clamp([x + 1, y === 0 ? 1 : 0], cols)];
       }
 
       // Gate H
       if (line === "qc.h(0)") {
-        return [
-          clamp([x + 1, y], cols), // Original position moves right
-          clamp([x + 1, y === 0 ? 1 : 0], cols) // New cat in the other row
-        ]
+        if (positions.length === 1) {
+          // Superposition: Cat is on both sides at the same time
+          return [
+            clamp([x + 1, y], cols),
+            clamp([x + 1, y === 0 ? 1 : 0], cols),
+          ];
+        } else {
+          // Collapse: If the cat is in superposition, it collapses to the state it was before
+          return y === positions[0][1] ? [clamp([x + 1, y], cols)] : [];
+        }
       }
 
       // Clamp position to map boundaries

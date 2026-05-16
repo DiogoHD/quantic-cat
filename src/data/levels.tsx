@@ -51,7 +51,7 @@ export const levels = [
   },
   {
     level: 3,
-    title: "O peixe está cada vez mais longe",
+    title: "A caixa está cada vez mais longe",
     catPositions: [[0, 0]],
     boxPositions: [[3, 1]],
     cols: 4,
