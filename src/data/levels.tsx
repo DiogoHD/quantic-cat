@@ -1,6 +1,5 @@
 export const levels = [
   {
-    level: 1,
     title: "A identidade do gato",
     catPositions: [[0, 0]],
     boxPositions: [[2, 0]],
@@ -25,7 +24,6 @@ export const levels = [
     ),
   },
   {
-    level: 2,
     title: "O gato troca de caminhos",
     catPositions: [[0, 0]],
     boxPositions: [[2, 1]],
@@ -50,7 +48,6 @@ export const levels = [
     ),
   },
   {
-    level: 3,
     title: "O gato tem fome!",
     catPositions: [[0, 0]],
     boxPositions: [[4, 0]],
@@ -68,7 +65,6 @@ export const levels = [
     ),
   },
   {
-    level: 4,
     title: "1 gato, 2 caixas",
     catPositions: [[0, 0]],
     boxPositions: [[2, 0], [2, 1]],
@@ -82,6 +78,26 @@ export const levels = [
           </code>
           {" "} é um gate de Hadamard, que coloca o qubit em superposição. No nosso jogo, isso significa que ele cria uma cópia do gato na linha oposta. 
           Assim, se o gato está na linha de cima, ele cria um novo gato na linha de baixo, e vice-versa.
+        </p>
+      </>
+    )
+  },
+  {
+    title: "O gato está cheio de fome!",
+    catPositions: [[0, 0]],
+    boxPositions: [[4, 0]],
+    fishPositions: [[2, 0], [2, 1]],
+    cols: 5,
+    description: (
+      <>
+        <p>
+          O gato está cheio de fome! Agora, para ganhar, precisas garantir que ele coma os dois peixes no caminho antes de entrar na caixa.
+        </p>
+        <p>
+          Estando o gato na superposição, ele pode comer ambos os peixes ao mesmo tempo!
+        </p>
+        <p>
+          Ao estar na superposição, se usarmos o gate de Hadamard de novo, o gato retorna ao estado que estava antes, desaparecendo o gato criado.
         </p>
       </>
     )
