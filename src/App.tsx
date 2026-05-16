@@ -14,8 +14,10 @@ export default function App() {
   const levelMap = levels[current];
   const lines = code.split("\n").map(line => line.trim()).filter(line => line.length > 0);
 
-  const catPositions = computeCatPosition(levelMap.catPositions as Position[], levelMap.cols, lines);
-  const hasWon = isCatAtBox(catPositions, levelMap.boxPositions as Position[]);
+  const { catPositions, fishesCaught } = computeCatPosition(levelMap.catPositions as Position[], levelMap.cols, lines, levelMap.fishPositions as Position[]);
+  const hasWon = levelMap.fishPositions
+    ? fishesCaught.every(caught => caught) && isCatAtBox(catPositions, levelMap.boxPositions as Position[])
+    : isCatAtBox(catPositions, levelMap.boxPositions as Position[]);
 
   useEffect(() => {
     if (hasWon) {
@@ -48,6 +50,8 @@ export default function App() {
           cols={levelMap.cols} 
           catPositions={catPositions as Position[]} 
           boxPositions={levelMap.boxPositions as Position[]} 
+          fishPositions={levelMap.fishPositions as Position[]} 
+          fishesCaught={fishesCaught}
           hasWon={hasWon} 
         />
       </div>

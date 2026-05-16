@@ -3,8 +3,8 @@ export const levels = [
     level: 1,
     title: "A identidade do gato",
     catPositions: [[0, 0]],
-    boxPositions: [[1, 0]],
-    cols: 2,
+    boxPositions: [[2, 0]],
+    cols: 3,
     description: (
       <>
         <p>
@@ -28,8 +28,8 @@ export const levels = [
     level: 2,
     title: "O gato troca de caminhos",
     catPositions: [[0, 0]],
-    boxPositions: [[1, 1]],
-    cols: 2,
+    boxPositions: [[2, 1]],
+    cols: 3,
     description: (
       <>
         <p>
@@ -51,14 +51,15 @@ export const levels = [
   },
   {
     level: 3,
-    title: "A caixa está cada vez mais longe",
+    title: "O gato tem fome!",
     catPositions: [[0, 0]],
-    boxPositions: [[3, 1]],
-    cols: 4,
+    boxPositions: [[4, 0]],
+    fishPositions: [[2, 1]],
+    cols: 5,
     description: (
       <>
         <p>
-          Agora vamos aplicar os dois gates que já conheces para resolver o nível.
+          Neste nível, o gato tem fome! Para ganhar, além de levar o gato para a caixa, também precisas garantir que ele coma o peixe no caminho.
         </p>
         <p>
           Usa os gates de identidade para avançar o gato, e os gates X para mudar a linha do gato quando necessário.

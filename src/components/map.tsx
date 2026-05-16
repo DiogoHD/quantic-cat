@@ -1,4 +1,4 @@
-import { Cat, OpenBox, ClosedBox } from "../entities"
+import { Cat, OpenBox, ClosedBox , Fish} from "../entities"
 import type { CellProps, MapProps } from "../types/map"
 
 function Cell({ index, children }: CellProps) {
@@ -12,9 +12,14 @@ function Cell({ index, children }: CellProps) {
   );
 }
 
-export function Map({ cols, catPositions, boxPositions, hasWon }: MapProps) {
+export function Map({ cols, catPositions, boxPositions, fishPositions, fishesCaught, hasWon }: MapProps) {
   const catIndices = catPositions.map(([x, y]) => y * cols + x);
   const boxIndices = boxPositions.map(([x, y]) => y * cols + x);
+  const fishIndices = fishPositions
+    ? fishPositions
+        .filter((_, i) => !fishesCaught?.[i])
+        .map(([x, y]) => y * cols + x)
+    : [];
 
   return (
     <div className="flex flex-col">
@@ -72,6 +77,7 @@ export function Map({ cols, catPositions, boxPositions, hasWon }: MapProps) {
                 <>
                   {catIndices.includes(i) && <Cat phase={0} />}
                   {boxIndices.includes(i) && <OpenBox />}
+                  {fishIndices.includes(i) && <Fish />}
                 </>
               )}
             </Cell>

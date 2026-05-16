@@ -9,5 +9,7 @@ export interface MapProps {
   cols: number;
   catPositions: Position[];
   boxPositions: Position[];
+  fishPositions?: Position[];
+  fishesCaught?: boolean[];
   hasWon: boolean;
 }

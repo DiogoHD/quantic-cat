@@ -1,10 +1,19 @@
 import type { Position } from "../types/position";
 
-export function computeCatPosition(startPositions: Position[], cols: number, lines: string[]): Position[] {
-  let positions: Position[] = startPositions;
+export function computeCatPosition(
+  startPositions: Position[], 
+  cols: number,
+  lines: string[], 
+  fishPositions?: Position[]
+) : { 
+  catPositions: Position[]; 
+  fishesCaught: boolean[] } 
+{
+  let catPositions: Position[] = startPositions;
+  let fishesCaught: boolean[] = fishPositions ? fishPositions.map(() => false) : [];
 
   for (const line of lines) {
-    positions = positions.flatMap(([x, y]) => {
+    catPositions = catPositions.flatMap(([x, y]) => {
       // Gate ID
       // Moves t\he cat to the right
       if (line === "qc.id(0)") {
@@ -21,7 +30,7 @@ export function computeCatPosition(startPositions: Position[], cols: number, lin
 
       // Gate H
       if (line === "qc.h(0)") {
-        if (positions.length === 1) {
+        if (catPositions.length === 1) {
           // Superposition: Cat is on both sides at the same time
           return [
             clamp([x + 1, y], cols),
@@ -29,16 +38,25 @@ export function computeCatPosition(startPositions: Position[], cols: number, lin
           ];
         } else {
           // Collapse: If the cat is in superposition, it collapses to the state it was before
-          return y === positions[0][1] ? [clamp([x + 1, y], cols)] : [];
+          return y === catPositions[0][1] ? [clamp([x + 1, y], cols)] : [];
         }
       }
 
       // Clamp position to map boundaries
       return [clamp([x, y], cols)];
     });
+
+    // Check if the fishes were caught after each line
+    if (fishPositions) {
+      fishesCaught = fishesCaught.map((alreadyCaught, i) => {
+        if (alreadyCaught) return true; // já apanhado antes, mantém
+        const [fx, fy] = fishPositions[i];
+        return catPositions.some(([cx, cy]) => cx === fx && cy === fy);
+      });
+    }
   }
 
-  return positions;
+  return { catPositions, fishesCaught };
 }
 
 export function isCatAtBox(catPositions: Position[], boxPositions: Position[]): boolean {
