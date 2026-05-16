@@ -3,44 +3,40 @@ import black_cat from "../assets/cats/black-cat.png"
 import white_cat from "../assets/cats/white-cat.png"
 import brown_cat from "../assets/cats/brown-cat.png"
 import pink_cat from "../assets/cats/pink-cat.png"
-import ghost_cat from "../assets/cats/ghost-cat.png"
 import yellow_cat from "../assets/cats/yellow-cat.png"
-import red_cat from "../assets/cats/red-cat.png"
+import beige_cat from "../assets/cats/beige-cat.png"
 import grey_cat from "../assets/cats/grey-cat.png"
 
-type CatType = "orange" | "black" | "white" | "brown" | "pink" | "yellow" | "red" | "grey" | "ghost";
+type CatType = 0 | 45 | 90 | 135 | 180 | 225 | 270 | 315;
 
-
-export function Cat({ type }: { type: CatType }) {
+export function Cat({ phase }: { phase: CatType }) {
   let catImage;
+  let phaseValue: CatType = phase % 360 as CatType;
   
-  switch (type) {
-    case "orange":
+  switch (phaseValue) {
+    case 0:
       catImage = orange_cat;
       break;
-    case "black":
-      catImage = black_cat;
+    case 45:
+      catImage = beige_cat;
       break;
-    case "white":
-      catImage = white_cat;
-      break;
-    case "brown":
+    case 90:
       catImage = brown_cat;
       break;
-    case "pink":
+    case 135:
+      catImage = black_cat;
+      break;
+    case 180:
+      catImage = grey_cat;
+      break;
+    case 225:
+      catImage = white_cat;
+      break;
+    case 270:
       catImage = pink_cat;
       break;
-    case "ghost":
-      catImage = ghost_cat;
-      break;
-    case "yellow":
+    case 315:
       catImage = yellow_cat;
-      break;
-    case "red":
-      catImage = red_cat;
-      break;
-    case "grey":
-      catImage = grey_cat;
       break;
     default:
       catImage = orange_cat;

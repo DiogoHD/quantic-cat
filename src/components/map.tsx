@@ -70,7 +70,7 @@ export function Map({ cols, catPosition, fishPosition, hasWon }: MapProps) {
                 <ClosedBox />
               ) : (
                 <>
-                  {i === catIndex && <Cat type="orange" />}
+                  {i === catIndex && <Cat phase={0} />}
                   {i === boxIndex && <OpenBox />}
                 </>
               )}
