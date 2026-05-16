@@ -1,29 +1,48 @@
 import type { Position } from "../types/position";
 
-export function computeCatPosition(startPosition: Position, cols: number, lines: string[]): Position {
-  let [x, y] = startPosition;
+export function computeCatPosition(startPositions: Position[], cols: number, lines: string[]): Position[] {
+  let positions: Position[] = startPositions;
 
   for (const line of lines) {
-    // Gate ID
-    if (line === "qc.id(0)") {
-      if (x + 1 < cols) x += 1;
-    }
+    positions = positions.flatMap(([x, y]) => {
+      // Gate ID
+      // Moves t\he cat to the right
+      if (line === "qc.id(0)") {
+        return [clamp([x + 1, y], cols)];
+      }
 
-    // Gate X
-    if (line === "qc.x(0)") {
-      y = y === 0 ? 1 : 0;
-      x += 1;
-    }
+      // Gate X
+      // Moves the cat to the right and changes the row
+      if (line === "qc.x(0)") {
+         return [clamp([x + 1, y === 0 ? 1 : 0], cols)];
+      }
 
-    // Clamp position to map boundaries
-    [x, y] = clamp([x, y], cols);
+      // Gate H
+      if (line === "qc.h(0)") {
+        return [
+          clamp([x + 1, y], cols), // Original position moves right
+          clamp([x + 1, y === 0 ? 1 : 0], cols) // New cat in the other row
+        ]
+      }
+
+      // Clamp position to map boundaries
+      return [clamp([x, y], cols)];
+    });
   }
 
-  return [x, y];
+  return positions;
 }
 
-export function isCatAtFish(catPosition: Position, fishPosition: Position): boolean {
-  return catPosition[0] === fishPosition[0] && catPosition[1] === fishPosition[1];
+export function isCatAtBox(catPositions: Position[], boxPositions: Position[]): boolean {
+  const allBoxesCovered = boxPositions.every(([bx, by]) => 
+    catPositions.some(([cx, cy]) => cx === bx && cy === by)
+  );
+
+  const allCatsInBoxes = catPositions.every(([cx, cy]) =>
+    boxPositions.some(([bx, by]) => cx === bx && cy === by)
+  );
+
+  return allBoxesCovered && allCatsInBoxes;
 }
 
 function clamp(pos: Position, cols: number): Position {

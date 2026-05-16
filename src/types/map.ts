@@ -7,7 +7,7 @@ export interface CellProps {
 
 export interface MapProps {
   cols: number;
-  catPosition: Position;
-  fishPosition: Position;
+  catPositions: Position[];
+  boxPositions: Position[];
   hasWon: boolean;
 }

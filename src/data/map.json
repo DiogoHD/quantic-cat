@@ -2,25 +2,29 @@
     {
         "level": 1,
         "title": "A identidade do gato",
-        "numberOfCats": 1,
-        "catPosition": [0, 0],
-        "fishPosition": [1, 0],
+        "catPositions": [[0, 0]],
+        "boxPositions": [[1, 0]],
         "cols": 2
     },
     {
         "level": 2,
         "title": "O gato troca de caminhos",
-        "numberOfCats": 1,
-        "catPosition": [0, 0],
-        "fishPosition": [1, 1],
+        "catPositions": [[0, 0]],
+        "boxPositions": [[1, 1]],
         "cols": 2
     },
     {
         "level": 3,
         "title": "O peixe está cada vez mais longe",
-        "numberOfCats": 1,
-        "catPosition": [0, 0],
-        "fishPosition": [3, 1],
+        "catPositions": [[0, 0]],
+        "boxPositions": [[3, 1]],
         "cols": 4
+    },
+    {
+        "level": 4,
+        "title": "1 gato, 2 caixas",
+        "catPositions": [[0, 0]],
+        "boxPositions": [[2, 0], [2, 1]],
+        "cols": 3
     }
 ]

@@ -4,7 +4,7 @@ export const descriptions = [
     description: (
       <>
         <p>
-          Todos os gates que você pode usar são aplicados ao qubit 0, que representa a posição do gato 0. 
+          Todos os gates que podes usar são aplicados ao qubit 0, que representa a posição do gato 0. 
           Além disso, todos os gates movem o gato para a direita, ou seja, eles avançam o gato uma coluna no mapa.
         </p>
         <p>
@@ -46,12 +46,27 @@ export const descriptions = [
     description: (
       <>
         <p>
-          Agora vamos aplicar os dois gates que você já conhece para resolver o nível.
+          Agora vamos aplicar os dois gates que já conheces para resolver o nível.
         </p>
         <p>
           Usa os gates de identidade para avançar o gato, e os gates X para mudar a linha do gato quando necessário.
         </p>
       </>
     ),
+  },
+  {
+    level: 4,
+    description: (
+      <>
+        <p> Neste nível, o objetivo é levar o gato para as duas caixas. Para isso, vais precisar usar os gates de forma estratégica para garantir que o gato entre em ambas as caixas. </p>
+        <p> O comando {" "}
+          <code className="px-1 py-0.5 rounded text-sm font-mono">
+            qc.h(0)
+          </code>
+          {" "} é um gate de Hadamard, que coloca o qubit em superposição. No nosso jogo, isso significa que ele cria uma cópia do gato na linha oposta. 
+          Assim, se o gato está na linha de cima, ele cria um novo gato na linha de baixo, e vice-versa.
+        </p>
+      </>
+    )
   }
 ];

@@ -12,9 +12,9 @@ function Cell({ index, children }: CellProps) {
   );
 }
 
-export function Map({ cols, catPosition, fishPosition, hasWon }: MapProps) {
-  const catIndex = catPosition[1] * cols + catPosition[0];
-  const boxIndex = fishPosition[1] * cols + fishPosition[0];
+export function Map({ cols, catPositions, boxPositions, hasWon }: MapProps) {
+  const catIndices = catPositions.map(([x, y]) => y * cols + x);
+  const boxIndices = boxPositions.map(([x, y]) => y * cols + x);
 
   return (
     <div className="flex flex-col">
@@ -66,12 +66,12 @@ export function Map({ cols, catPosition, fishPosition, hasWon }: MapProps) {
         >
           {Array.from({ length: cols * 2 }, (_, i) => (
             <Cell key={i} index={i}>
-              {i === catIndex && i === boxIndex ? (
+              {catIndices.includes(i) && boxIndices.includes(i) ? (
                 <ClosedBox />
               ) : (
                 <>
-                  {i === catIndex && <Cat phase={0} />}
-                  {i === boxIndex && <OpenBox />}
+                  {catIndices.includes(i) && <Cat phase={0} />}
+                  {boxIndices.includes(i) && <OpenBox />}
                 </>
               )}
             </Cell>

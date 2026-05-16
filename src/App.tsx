@@ -2,7 +2,7 @@ import { Map } from "./components/map"
 import { Level } from "./components/level"
 import { useState } from "react";
 import mapData from "./data/map.json";
-import { computeCatPosition, isCatAtFish } from "./services/catEngine";
+import { computeCatPosition, isCatAtBox } from "./services/catEngine";
 import type { Position } from "./types/position";
 
 export default function App() {
@@ -12,8 +12,8 @@ export default function App() {
   const levelMap = mapData[current];
   const lines = code.split("\n").map(line => line.trim()).filter(line => line.length > 0);
 
-  const catPosition = computeCatPosition(levelMap.catPosition as Position, levelMap.cols, lines);
-  const hasWon = isCatAtFish(catPosition, levelMap.fishPosition as Position);
+  const catPositions = computeCatPosition(levelMap.catPositions as Position[], levelMap.cols, lines);
+  const hasWon = isCatAtBox(catPositions, levelMap.boxPositions as Position[]);
 
   return (
     <div className="min-h-screen w-screen flex text-white overflow-y-auto">
@@ -33,8 +33,8 @@ export default function App() {
 
         <Map 
           cols={levelMap.cols} 
-          catPosition={catPosition} 
-          fishPosition={levelMap.fishPosition as Position} 
+          catPositions={catPositions as Position[]} 
+          boxPositions={levelMap.boxPositions as Position[]} 
           hasWon={hasWon} 
         />
       </div>
