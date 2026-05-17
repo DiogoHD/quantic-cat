@@ -1,0 +1,42 @@
+[
+    {
+        "color": "orange",
+        "catSrc": "/cats/orange-cat.png",
+        "eatingSrc": "/eating-cats/orange-cat-eating.png"
+    },
+    {
+        "color": "beige",
+        "catSrc": "/cats/beige-cat.png",
+        "eatingSrc": "/eating-cats/beige-cat-eating.png"
+    },
+    {
+        "color": "brown",
+        "catSrc": "/cats/brown-cat.png",
+        "eatingSrc": "/eating-cats/brown-cat-eating.png"
+    },
+    {
+        "color": "black",
+        "catSrc": "/cats/black-cat.png",
+        "eatingSrc": "/eating-cats/black-cat-eating.png"
+    },
+    {
+        "color": "grey",
+        "catSrc": "/cats/grey-cat.png",
+        "eatingSrc": "/eating-cats/grey-cat-eating.png"
+    },
+    {
+        "color": "white",
+        "catSrc": "/cats/white-cat.png",
+        "eatingSrc": "/eating-cats/white-cat-eating.png"
+    },
+    {
+        "color": "pink",
+        "catSrc": "/cats/pink-cat.png",
+        "eatingSrc": "/eating-cats/pink-cat-eating.png"
+    },
+    {
+        "color": "yellow",
+        "catSrc": "/cats/yellow-cat.png",
+        "eatingSrc": "/eating-cats/yellow-cat-eating.png"
+    }
+]

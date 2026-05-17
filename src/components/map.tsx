@@ -75,7 +75,10 @@ export function Map({ cols, catPositions, boxPositions, fishPositions, fishesCau
                 <ClosedBox />
               ) : (
                 <>
-                  {catIndices.includes(i) && <Cat phase={0} />}
+                  {catIndices.includes(i) && <Cat 
+                    phase={0} 
+                    eating={fishPositions?.some(([fx, fy]) => fy * cols + fx === i) ?? false} 
+                  />}
                   {boxIndices.includes(i) && <OpenBox />}
                   {fishIndices.includes(i) && <Fish />}
                 </>

@@ -22,10 +22,10 @@ export function Description({ current, setCurrent, code, setCode, completed }: L
       </div>
 
       {/* Progress bar */}
-      <div className="h-1 bg-amber-800">
+      <div className="min-h-1 w-full bg-amber-800">
         <div
-          className="h-full bg-amber-500 transition-all duration-500"
-          style={{ width: `${((current + 1) / levelsWithTitles.length) * 100}%` }}
+          className="h-full bg-amber-600 transition-all duration-500"
+          style={{ width: `${(completed.filter(Boolean).length / levelsWithTitles.length) * 100}%` }}
         />
       </div>
 
@@ -61,7 +61,7 @@ export function Description({ current, setCurrent, code, setCode, completed }: L
             <textarea
               value={code}
               onChange={(e) => setCode(e.target.value)}
-              className="flex-1 h bg-transparent outline-none resize-none text-amber-300 text-sm leading-6 placeholder:text-amber-800 caret-amber-400"
+              className="flex-1 bg-transparent outline-none resize-none text-amber-300 text-sm leading-6 placeholder:text-amber-800 caret-amber-400"
               rows={3}
               placeholder="qc.id(0)"
               spellCheck={false}
