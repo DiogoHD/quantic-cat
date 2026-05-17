@@ -3,7 +3,6 @@ import { Description } from "./components/description"
 import { useState, useEffect } from "react";
 import { computeCatPosition, isCatAtBox } from "./services/catEngine";
 import type { PositionPhase, Position } from "./types/position";
-import type { Phases } from "./types/phase";
 import { levels } from "./data/levels";
 
 export default function App() {
