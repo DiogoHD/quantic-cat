@@ -1,4 +1,4 @@
-import { Cat, OpenBox, ClosedBox } from "../entities"
+import { Cat, OpenBox, ClosedBox , Fish, Wave } from "../entities"
 import type { CellProps, MapProps } from "../types/map"
 
 function Cell({ index, children }: CellProps) {
@@ -12,9 +12,17 @@ function Cell({ index, children }: CellProps) {
   );
 }
 
-export function Map({ cols, catPosition, fishPosition, hasWon }: MapProps) {
-  const catIndex = catPosition[1] * cols + catPosition[0];
-  const boxIndex = fishPosition[1] * cols + fishPosition[0];
+export function Map({ cols, cats, boxPositions, fishPositions, waves, fishesCaught, hasWon }: MapProps) {
+  const catIndices = cats.map(([[x, y], _]) => y * cols + x);
+  const boxIndices = boxPositions.map(([x, y]) => y * cols + x);
+  const fishIndices = fishPositions
+    ? fishPositions
+        .filter((_, i) => !fishesCaught?.[i])
+        .map(([x, y]) => y * cols + x)
+    : [];
+  const waveIndices = waves
+    ? waves.map(([[x, y], _]) => y * cols + x)
+    : [];
 
   return (
     <div className="flex flex-col">
@@ -66,12 +74,20 @@ export function Map({ cols, catPosition, fishPosition, hasWon }: MapProps) {
         >
           {Array.from({ length: cols * 2 }, (_, i) => (
             <Cell key={i} index={i}>
-              {i === catIndex && i === boxIndex ? (
+              {catIndices.includes(i) && boxIndices.includes(i) ? (
                 <ClosedBox />
               ) : (
                 <>
-                  {i === catIndex && <Cat type="orange" />}
-                  {i === boxIndex && <OpenBox />}
+                  {catIndices.includes(i) && (() => {
+                    const catIndex = catIndices.indexOf(i);
+                    const [[, ], phase] = cats[catIndex];
+                    return <Cat phase={phase} eating={fishPositions?.some(([fx, fy]) => fy * cols + fx === i) ?? false} />;
+                  })()}
+                  {boxIndices.includes(i) && <OpenBox />}
+                  {fishIndices.includes(i) && <Fish />}
+                  {waveIndices.includes(i) && (
+                    <Wave phase={waves![waveIndices.indexOf(i)][1]} />
+                  )}
                 </>
               )}
             </Cell>

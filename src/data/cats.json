@@ -1,0 +1,50 @@
+[
+    {
+        "color": "orange",
+        "hex": "#F8991B",
+        "catSrc": "/cats/orange-cat.png",
+        "eatingSrc": "/eating-cats/orange-cat-eating.png"
+    },
+    {
+        "color": "beige",
+        "hex": "#DEBD90",
+        "catSrc": "/cats/beige-cat.png",
+        "eatingSrc": "/eating-cats/beige-cat-eating.png"
+    },
+    {
+        "color": "brown",
+        "hex": "#835130",
+        "catSrc": "/cats/brown-cat.png",
+        "eatingSrc": "/eating-cats/brown-cat-eating.png"
+    },
+    {
+        "color": "black",
+        "hex": "#2F333E",
+        "catSrc": "/cats/black-cat.png",
+        "eatingSrc": "/eating-cats/black-cat-eating.png"
+    },
+    {
+        "color": "grey",
+        "hex": "#898E94",
+        "catSrc": "/cats/grey-cat.png",
+        "eatingSrc": "/eating-cats/grey-cat-eating.png"
+    },
+    {
+        "color": "white",
+        "hex": "#E8F2F4",
+        "catSrc": "/cats/white-cat.png",
+        "eatingSrc": "/eating-cats/white-cat-eating.png"
+    },
+    {
+        "color": "pink",
+        "hex": "#F5ACC9",
+        "catSrc": "/cats/pink-cat.png",
+        "eatingSrc": "/eating-cats/pink-cat-eating.png"
+    },
+    {
+        "color": "yellow",
+        "hex": "#F8CB30",
+        "catSrc": "/cats/yellow-cat.png",
+        "eatingSrc": "/eating-cats/yellow-cat-eating.png"
+    }
+]

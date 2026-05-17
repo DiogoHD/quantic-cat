@@ -1,4 +1,4 @@
-import type { Position } from "./position";
+import type { Position, PositionPhase } from "./position";
 
 export interface CellProps {
   index: number;
@@ -7,7 +7,10 @@ export interface CellProps {
 
 export interface MapProps {
   cols: number;
-  catPosition: Position;
-  fishPosition: Position;
+  cats: PositionPhase[];
+  boxPositions: Position[];
+  fishPositions?: Position[];
+  fishesCaught?: boolean[];
+  waves?: PositionPhase[];
   hasWon: boolean;
 }

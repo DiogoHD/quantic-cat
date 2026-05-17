@@ -1,25 +1,47 @@
 import { Map } from "./components/map"
-import { Level } from "./components/level"
-import { useState } from "react";
-import mapData from "./data/map.json";
-import { computeCatPosition, isCatAtFish } from "./services/catEngine";
-import type { Position } from "./types/position";
+import { Description } from "./components/description"
+import { useState, useEffect } from "react";
+import { computeCatPosition, isCatAtBox } from "./services/catEngine";
+import type { PositionPhase, Position } from "./types/position";
+import type { Phases } from "./types/phase";
+import { levels } from "./data/levels";
 
 export default function App() {
   const [ current, setCurrent ] = useState(0);
   const [ code, setCode ] = useState("");
+  // Track completed levels
+  const [completed, setCompleted] = useState<boolean[]>(() => levels.map(() => false));
 
-  const levelMap = mapData[current];
+  const levelMap = levels[current];
   const lines = code.split("\n").map(line => line.trim()).filter(line => line.length > 0);
 
-  const catPosition = computeCatPosition(levelMap.catPosition as Position, levelMap.cols, lines);
-  const hasWon = isCatAtFish(catPosition, levelMap.fishPosition as Position);
+  const { cats, fishesCaught } = computeCatPosition(
+    levelMap.catPositions as PositionPhase[] , 
+    levelMap.cols, 
+    lines, 
+    levelMap.fishPositions as Position[],
+    levelMap.wavePositions as PositionPhase[]
+  );
+  const hasWon = levelMap.fishPositions
+    ? fishesCaught.every(caught => caught) && isCatAtBox(cats.map(([pos]) => pos), levelMap.boxPositions as Position[])
+    : isCatAtBox(cats.map(([pos]) => pos), levelMap.boxPositions as Position[]);
+
+  useEffect(() => {
+    if (hasWon) {
+      setCompleted(prev => {
+        const next = [...prev];
+        next[current] = true;
+        return next;
+      });
+    }
+  }, [hasWon, current]);
+
 
   return (
     <div className="min-h-screen w-screen flex text-white overflow-y-auto">
       {/* Left Side */}
       <div className="flex flex-1 bg-amber-200 items-center justify-center">
-        <Level current={current} setCurrent={setCurrent} code={code} setCode={setCode} hasWon={hasWon} />
+        <Description current={current} setCurrent={setCurrent} code={code} setCode={setCode} completed={completed} />
       </div>
 
       {/* Right Side */}
@@ -33,8 +55,11 @@ export default function App() {
 
         <Map 
           cols={levelMap.cols} 
-          catPosition={catPosition} 
-          fishPosition={levelMap.fishPosition as Position} 
+          cats={cats} 
+          boxPositions={levelMap.boxPositions as Position[]} 
+          fishPositions={levelMap.fishPositions as Position[]} 
+          fishesCaught={fishesCaught}
+          waves={levelMap.wavePositions as PositionPhase[]}
           hasWon={hasWon} 
         />
       </div>
