@@ -33,9 +33,9 @@ export function Description({ current, setCurrent, code, setCode, completed }: L
   };
 
   return (
-    <div className="h-screen w-full flex flex-col bg-amber-600/70 text-white font-mono">
+    <div className="h-screen w-full flex flex-col text-white font-mono">
       {/* Header */}
-      <div className="flex items-center justify-between px-6 py-4 border-b border-amber-900 text-xl ">
+      <div className="flex items-center justify-between px-6 py-4 text-xl ">
         {/* Game title */}
         <span className="font-bold tracking-widest uppercase">
         Quantic Cat
@@ -88,7 +88,7 @@ export function Description({ current, setCurrent, code, setCode, completed }: L
       </div>
 
       {/* Progress bar */}
-      <div className="min-h-1 w-full bg-amber-800">
+      <div className="min-h-1 w-full bg-amber-900">
         <div
           className="h-full bg-amber-600 transition-all duration-500"
           style={{ width: `${(completed.filter(Boolean).length / levelsWithTitles.length) * 100}%` }}
@@ -108,27 +108,27 @@ export function Description({ current, setCurrent, code, setCode, completed }: L
       </div>
 
       {/* Code editor */}
-      <div className="flex flex-1 px-6 py-4">
-        <div className="w-full bg-[#1f180f] border border-amber-900 rounded-sm">
+      <div className="flex flex-1 flex-col px-6 py-4">
+        <div className="flex flex-col flex-1 min-h-0 bg-[#1f180f] border border-amber-700 rounded-sm">
+          
           {/* Editor header */}
-          <div className="flex items-center gap-1.5 px-3 py-2 border-b border-amber-900/60 bg-[#0c190c]">
+          <div className="shrink-0 flex items-center gap-1.5 px-3 py-2 border-b border-amber-700/60 bg-[#0c190c]">
             <span className="text-xs">Python</span>
             <span className="text-xs ml-auto">Qiskit</span>
           </div>
 
           {/* Static prefix */}
-          <div className="flex flex-col p-3 text-sm">
+          <div className="shrink-0 flex flex-col p-3 text-sm">
             <span>from qiskit import QuantumCircuit</span>
             <span>qc = QuantumCircuit(1)</span>
           </div>
 
           {/* Textarea */}
-          <div className="flex p-3">
+          <div className="flex flex-1 min-h-0 p-3">
             <textarea
               value={code}
               onChange={(e) => setCode(e.target.value)}
-              className="flex-1 bg-transparent outline-none resize-none text-amber-300 text-sm leading-6 placeholder:text-amber-800 caret-amber-400"
-              rows={3}
+              className="flex-1 bg-transparent outline-none resize-none text-amber-300 text-sm leading-6 placeholder:text-amber-900 caret-amber-400"
               placeholder="qc.id(0)"
               spellCheck={false}
             />
@@ -141,7 +141,7 @@ export function Description({ current, setCurrent, code, setCode, completed }: L
         <button
           onClick={() => { setCurrent(Math.max(0, current - 1)); setCode(""); }}
           disabled={current === 0}
-          className="px-4 py-2 text-xs uppercase tracking-widest border border-amber-800 hover:bg-amber-900/40 disabled:opacity-20 disabled:cursor-not-allowed transition-colors rounded-sm hover:cursor-pointer"
+          className="px-4 py-2 text-xs uppercase tracking-widest border border-amber-700 hover:bg-amber-900/40 disabled:opacity-20 disabled:cursor-not-allowed transition-colors rounded-sm hover:cursor-pointer"
         >
           ← Anterior
         </button>

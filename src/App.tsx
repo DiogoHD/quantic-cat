@@ -38,16 +38,16 @@ export default function App() {
 
 
   return (
-    <div className="min-h-screen w-screen flex text-white overflow-y-auto">
+    <div className="min-h-screen w-screen flex text-white">
       {/* Left Side */}
-      <div className="flex flex-1 bg-amber-200 items-center justify-center">
+      <div className="flex flex-1items-center justify-center overflow-y-auto">
         <Description current={current} setCurrent={setCurrent} code={code} setCode={setCode} completed={completed} />
       </div>
 
       {/* Right Side */}
-      <div className="flex flex-1 flex-col bg-gray-800 items-center justify-center">
+      <div className="flex min-w-[50vw] w-fit flex-col bg-gray-800 items-center justify-center p-8">
         {/* Title */}
-        <div className="mb-6 text-center px-4">
+        <div className="mb-6 text-center">
           <p className="text-3xl font-black tracking-[0.2em] uppercase text-amber-400">
             {levelMap.title}
           </p>

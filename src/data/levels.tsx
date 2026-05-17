@@ -15,7 +15,7 @@ export const levels = [
         </p>
         <p>
           O comando {" "}
-          <code className="px-1 py-0.5 rounded text-sm font-mono">
+          <code className="px-1 py-0.5 rounded text-sm font-mono bg-amber-700!">
             qc.id(0)
           </code>
           {" "} é um gate de identidade, ou seja, ele não altera o estado do qubit. No entanto, ele ainda move o gato para a direita! Use isso para ajudar o gato a entrar na caixa!
@@ -35,7 +35,7 @@ export const levels = [
         </p>
         <p>
           O comando {" "}
-          <code className="px-1 py-0.5 rounded text-sm font-mono">
+          <code className="px-1 py-0.5 rounded text-sm font-mono bg-amber-700!">
             qc.x(0)
           </code>
           {" "} é um gate de Pauli-X, que inverte o estado do qubit. 
@@ -73,7 +73,7 @@ export const levels = [
       <>
         <p> Neste nível, o objetivo é levar o gato para as duas caixas. Para isso, vais precisar usar os gates de forma estratégica para garantir que o gato entre em ambas as caixas. </p>
         <p> O comando {" "}
-          <code className="px-1 py-0.5 rounded text-sm font-mono">
+          <code className="px-1 py-0.5 rounded text-sm font-mono bg-amber-700!">
             qc.h(0)
           </code>
           {" "} é um gate de Hadamard, que coloca o qubit em superposição. No nosso jogo, isso significa que ele cria uma cópia do gato na linha oposta. 
@@ -138,7 +138,7 @@ export const levels = [
         </p>
         <p>
           O comando {" "}
-          <code className="px-1 py-0.5 rounded text-sm font-mono">
+          <code className="px-1 py-0.5 rounded text-sm font-mono bg-amber-700!">
             qc.z(0)
           </code>
           {" "} é um gate de Pauli-Z, que inverte a fase do qubit, adicionando 180° à fase atual. No nosso jogo, isso significa que ele muda a cor do gato: se o gato é laranja e passa a ser cinza, e vice-versa.
@@ -162,7 +162,7 @@ export const levels = [
         </p>
         <p>
           Para adicionar 90° à fase do gato, usa o comando {" "}
-          <code className="px-1 py-0.5 rounded text-sm font-mono">
+          <code className="px-1 py-0.5 rounded text-sm font-mono bg-amber-700!">
             qc.s(0)
           </code>
           {" "}, que é um gate de fase S.
@@ -186,7 +186,7 @@ export const levels = [
         </p>
         <p>
           Para adicionar 45° à fase do gato, usa o comando {" "}
-          <code className="px-1 py-0.5 rounded text-sm font-mono">
+          <code className="px-1 py-0.5 rounded text-sm font-mono bg-amber-700!">
             qc.t(0)
           </code>
           {" "}, que é um gate de fase T.
