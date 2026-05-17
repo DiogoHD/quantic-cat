@@ -3,6 +3,7 @@ import { Description } from "./components/description"
 import { useState, useEffect } from "react";
 import { computeCatPosition, isCatAtBox } from "./services/catEngine";
 import type { Position } from "./types/position";
+import type { Phases } from "./types/phase";
 import { levels } from "./data/levels";
 
 export default function App() {
@@ -52,6 +53,8 @@ export default function App() {
           boxPositions={levelMap.boxPositions as Position[]} 
           fishPositions={levelMap.fishPositions as Position[]} 
           fishesCaught={fishesCaught}
+          wavePositions={levelMap.wavePositions as Position[]}
+          wavePhases={levelMap.wavePhases as Phases[]}
           hasWon={hasWon} 
         />
       </div>

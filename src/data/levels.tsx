@@ -101,5 +101,23 @@ export const levels = [
         </p>
       </>
     )
+  },
+  {
+    title: "Uma estranha interferência",
+    catPositions: [[0, 0]],
+    boxPositions: [[4, 0]],
+    wavePositions: [[2, 0], [2, 1]],
+    wavePhases: [270, 0],
+    cols: 5,
+    description: (
+      <>
+        <p>
+          O gato está a sofrer uma estranha interferência! Existem ondas de interferência no caminho do gato, e o gato só pode atravessas essas ondas se for da mesma fase que a onda. Caso contrário, o gato é repelido para a coluna anterior.
+        </p>
+        <p>
+          Neste jogo, ser da mesma fase significa ser da mesma cor. Assim, o gato só pode atravessar as ondas laranja, e é repelido pelas ondas rosa.
+        </p>
+      </>
+    )
   }
 ];

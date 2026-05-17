@@ -1,4 +1,4 @@
-import { Cat, OpenBox, ClosedBox , Fish} from "../entities"
+import { Cat, OpenBox, ClosedBox , Fish, Wave } from "../entities"
 import type { CellProps, MapProps } from "../types/map"
 
 function Cell({ index, children }: CellProps) {
@@ -12,13 +12,16 @@ function Cell({ index, children }: CellProps) {
   );
 }
 
-export function Map({ cols, catPositions, boxPositions, fishPositions, fishesCaught, hasWon }: MapProps) {
+export function Map({ cols, catPositions, boxPositions, fishPositions, wavePositions, wavePhases, fishesCaught, hasWon }: MapProps) {
   const catIndices = catPositions.map(([x, y]) => y * cols + x);
   const boxIndices = boxPositions.map(([x, y]) => y * cols + x);
   const fishIndices = fishPositions
     ? fishPositions
         .filter((_, i) => !fishesCaught?.[i])
         .map(([x, y]) => y * cols + x)
+    : [];
+  const waveIndices = wavePositions
+    ? wavePositions.map(([x, y]) => y * cols + x)
     : [];
 
   return (
@@ -81,6 +84,9 @@ export function Map({ cols, catPositions, boxPositions, fishPositions, fishesCau
                   />}
                   {boxIndices.includes(i) && <OpenBox />}
                   {fishIndices.includes(i) && <Fish />}
+                  {waveIndices.includes(i) && (
+                    <Wave phase={wavePhases ? wavePhases[waveIndices.indexOf(i)] : 0} />
+                  )}
                 </>
               )}
             </Cell>

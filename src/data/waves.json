@@ -1,0 +1,34 @@
+[
+    {
+        "color": "orange",
+        "hex": "#F8991B"
+    },
+    {
+        "color": "beige",
+        "hex": "#DEBD90"
+    },
+    {
+        "color": "brown",
+        "hex": "#835130"
+    },
+    {
+        "color": "black",
+        "hex": "#2F333E"
+    },
+    {
+        "color": "grey",
+        "hex": "#898E94"
+    },
+    {
+        "color": "white",
+        "hex": "#E8F2F4"
+    },
+    {
+        "color": "pink",
+        "hex": "#F5ACC9"
+    },
+    {
+        "color": "yellow",
+        "hex": "#F8CB30"
+    }
+]   
