@@ -121,5 +121,94 @@ export const levels = [
         </p>
       </>
     )
+  },
+  {
+    title: "O gato muda de cor",
+    catPositions: [[[0, 0], 0]],
+    boxPositions: [[4, 0]],
+    wavePositions: [[[2, 0], 180], [[2, 1], 180]],
+    cols: 5,
+    description: (
+      <>
+        <p>
+          As ondas continuam por perto! Só que, desta vez, não existe nenhuma onda laranja para que o gato possa passar.
+        </p>
+        <p>
+          Vamos agora aprender como mudar a fase do gato usando os gates de fase.
+        </p>
+        <p>
+          O comando {" "}
+          <code className="px-1 py-0.5 rounded text-sm font-mono">
+            qc.z(0)
+          </code>
+          {" "} é um gate de Pauli-Z, que inverte a fase do qubit, adicionando 180° à fase atual. No nosso jogo, isso significa que ele muda a cor do gato: se o gato é laranja e passa a ser cinza, e vice-versa.
+        </p>
+      </>
+    )
+  },
+  {
+    title: "Gato Antigo",
+    catPositions: [[[0, 0], 135]],
+    boxPositions: [[4, 0]],
+    wavePositions: [[[2, 0], 225], [[2, 1], 225]],
+    cols: 5,
+    description: (
+      <>
+        <p>
+          Este gato saltou diretamente dos anos 80 para o nosso jogo, e por isso tem uma fase muito estranha: 135°!
+        </p>
+        <p>
+          Este gato é preto e, para ele passar pelas ondas brancas, que têm fase 225°, precisas de o tornar branco.
+        </p>
+        <p>
+          Para adicionar 90° à fase do gato, usa o comando {" "}
+          <code className="px-1 py-0.5 rounded text-sm font-mono">
+            qc.s(0)
+          </code>
+          {" "}, que é um gate de fase S.
+        </p>
+      </>
+    )
+  },
+  {
+    title: "Gato Alienígena",
+    catPositions: [[[0, 0], 270]],
+    boxPositions: [[4, 0]],
+    wavePositions: [[[2, 0], 315], [[2, 1], 315]],
+    cols: 5,
+    description: (
+      <>
+        <p>
+          Será que este gato é do futuro? Onde já se viu um gato rosa!
+        </p>
+        <p>
+          Este gato tem uma fase de 270°, e para ele passar pelas ondas amarelas, que têm fase 315°. Logo, precisas de mudar a fase do gato para 315°.
+        </p>
+        <p>
+          Para adicionar 45° à fase do gato, usa o comando {" "}
+          <code className="px-1 py-0.5 rounded text-sm font-mono">
+            qc.t(0)
+          </code>
+          {" "}, que é um gate de fase T.
+        </p>
+      </>
+    )
+  },
+  {
+    title: "Gato Arco-íris",
+    catPositions: [[[0, 0], 45]],
+    boxPositions: [[6, 0]],
+    wavePositions: [[[1, 0], 90], [[1, 1], 90], [[2, 0], 270], [[2, 1], 270], [[3, 0], 315], [[3, 1], 315], [[4, 0], 45], [[4, 1], 45], [[5, 0], 90], [[5, 1], 90]],
+    cols: 7,
+    description: (
+      <>
+        <p>
+          Este gato tem um desafio e tanto! Tem de passar por imensas ondas antes de chegar à caixa e, para isso precisa de ter a fase certa para cada onda.
+        </p>
+        <p>
+          Para resolver este nível, usa todos os gates de fase que aprendeste: Z, S e T. Lembra-te que cada gate de fase também move o gato para a direita, então planeia bem os teus movimentos para garantir que o gato esteja na fase certa para cada onda!
+        </p>
+      </>
+    )
   }
 ];
