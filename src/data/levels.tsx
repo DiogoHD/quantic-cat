@@ -1,7 +1,7 @@
 export const levels = [
   {
     title: "A identidade do gato",
-    catPositions: [[0, 0]],
+    catPositions: [[[0, 0], 0]],
     boxPositions: [[2, 0]],
     cols: 3,
     description: (
@@ -25,7 +25,7 @@ export const levels = [
   },
   {
     title: "O gato troca de caminhos",
-    catPositions: [[0, 0]],
+    catPositions: [[[0, 0], 0]],
     boxPositions: [[2, 1]],
     cols: 3,
     description: (
@@ -49,7 +49,7 @@ export const levels = [
   },
   {
     title: "O gato tem fome!",
-    catPositions: [[0, 0]],
+    catPositions: [[[0, 0], 0]],
     boxPositions: [[4, 0]],
     fishPositions: [[2, 1]],
     cols: 5,
@@ -66,7 +66,7 @@ export const levels = [
   },
   {
     title: "1 gato, 2 caixas",
-    catPositions: [[0, 0]],
+    catPositions: [[[0, 0], 0]],
     boxPositions: [[2, 0], [2, 1]],
     cols: 3,
     description: (
@@ -84,7 +84,7 @@ export const levels = [
   },
   {
     title: "O gato está cheio de fome!",
-    catPositions: [[0, 0]],
+    catPositions: [[[0, 0], 0]],
     boxPositions: [[4, 0]],
     fishPositions: [[2, 0], [2, 1]],
     cols: 5,
@@ -104,10 +104,9 @@ export const levels = [
   },
   {
     title: "Uma estranha interferência",
-    catPositions: [[0, 0]],
+    catPositions: [[[0, 0], 0]],
     boxPositions: [[4, 0]],
-    wavePositions: [[2, 0], [2, 1]],
-    wavePhases: [270, 0],
+    wavePositions: [[[2, 0], 270], [[2, 1], 0]],
     cols: 5,
     description: (
       <>

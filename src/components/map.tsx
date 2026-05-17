@@ -12,16 +12,16 @@ function Cell({ index, children }: CellProps) {
   );
 }
 
-export function Map({ cols, catPositions, boxPositions, fishPositions, wavePositions, wavePhases, fishesCaught, hasWon }: MapProps) {
-  const catIndices = catPositions.map(([x, y]) => y * cols + x);
+export function Map({ cols, cats, boxPositions, fishPositions, waves, fishesCaught, hasWon }: MapProps) {
+  const catIndices = cats.map(([[x, y], _]) => y * cols + x);
   const boxIndices = boxPositions.map(([x, y]) => y * cols + x);
   const fishIndices = fishPositions
     ? fishPositions
         .filter((_, i) => !fishesCaught?.[i])
         .map(([x, y]) => y * cols + x)
     : [];
-  const waveIndices = wavePositions
-    ? wavePositions.map(([x, y]) => y * cols + x)
+  const waveIndices = waves
+    ? waves.map(([[x, y], _]) => y * cols + x)
     : [];
 
   return (
@@ -78,14 +78,15 @@ export function Map({ cols, catPositions, boxPositions, fishPositions, wavePosit
                 <ClosedBox />
               ) : (
                 <>
-                  {catIndices.includes(i) && <Cat 
-                    phase={0} 
-                    eating={fishPositions?.some(([fx, fy]) => fy * cols + fx === i) ?? false} 
-                  />}
+                  {catIndices.includes(i) && (() => {
+                    const catIndex = catIndices.indexOf(i);
+                    const [[, ], phase] = cats[catIndex];
+                    return <Cat phase={phase} eating={fishPositions?.some(([fx, fy]) => fy * cols + fx === i) ?? false} />;
+                  })()}
                   {boxIndices.includes(i) && <OpenBox />}
                   {fishIndices.includes(i) && <Fish />}
                   {waveIndices.includes(i) && (
-                    <Wave phase={wavePhases ? wavePhases[waveIndices.indexOf(i)] : 0} />
+                    <Wave phase={waves![waveIndices.indexOf(i)][1]} />
                   )}
                 </>
               )}

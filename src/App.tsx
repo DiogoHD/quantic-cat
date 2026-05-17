@@ -2,7 +2,7 @@ import { Map } from "./components/map"
 import { Description } from "./components/description"
 import { useState, useEffect } from "react";
 import { computeCatPosition, isCatAtBox } from "./services/catEngine";
-import type { Position } from "./types/position";
+import type { PositionPhase, Position } from "./types/position";
 import type { Phases } from "./types/phase";
 import { levels } from "./data/levels";
 
@@ -15,10 +15,16 @@ export default function App() {
   const levelMap = levels[current];
   const lines = code.split("\n").map(line => line.trim()).filter(line => line.length > 0);
 
-  const { catPositions, fishesCaught } = computeCatPosition(levelMap.catPositions as Position[], levelMap.cols, lines, levelMap.fishPositions as Position[]);
+  const { cats, fishesCaught } = computeCatPosition(
+    levelMap.catPositions as PositionPhase[] , 
+    levelMap.cols, 
+    lines, 
+    levelMap.fishPositions as Position[],
+    levelMap.wavePositions as PositionPhase[]
+  );
   const hasWon = levelMap.fishPositions
-    ? fishesCaught.every(caught => caught) && isCatAtBox(catPositions, levelMap.boxPositions as Position[])
-    : isCatAtBox(catPositions, levelMap.boxPositions as Position[]);
+    ? fishesCaught.every(caught => caught) && isCatAtBox(cats.map(([pos]) => pos), levelMap.boxPositions as Position[])
+    : isCatAtBox(cats.map(([pos]) => pos), levelMap.boxPositions as Position[]);
 
   useEffect(() => {
     if (hasWon) {
@@ -49,12 +55,11 @@ export default function App() {
 
         <Map 
           cols={levelMap.cols} 
-          catPositions={catPositions as Position[]} 
+          cats={cats} 
           boxPositions={levelMap.boxPositions as Position[]} 
           fishPositions={levelMap.fishPositions as Position[]} 
           fishesCaught={fishesCaught}
-          wavePositions={levelMap.wavePositions as Position[]}
-          wavePhases={levelMap.wavePhases as Phases[]}
+          waves={levelMap.wavePositions as PositionPhase[]}
           hasWon={hasWon} 
         />
       </div>

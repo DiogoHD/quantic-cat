@@ -1,49 +1,65 @@
-import type { Position } from "../types/position";
+import type { Position, PositionPhase } from "../types/position";
 
 export function computeCatPosition(
-  startPositions: Position[], 
+  catStartPosition: PositionPhase[],
   cols: number,
   lines: string[], 
-  fishPositions?: Position[]
+  fishPositions?: Position[],
+  waves?: PositionPhase[]
 ) : { 
-  catPositions: Position[]; 
+  cats: PositionPhase[];
   fishesCaught: boolean[] } 
 {
-  let catPositions: Position[] = startPositions;
+  let cats = catStartPosition;
   let fishesCaught: boolean[] = fishPositions ? fishPositions.map(() => false) : [];
 
   for (const line of lines) {
-    catPositions = catPositions.flatMap(([x, y]) => {
+    let newPositions: Position[] = [];
+
+    cats = cats.flatMap(([[x, y], phase]) => {
       // Gate ID
       // Moves t\he cat to the right
       if (line === "qc.id(0)") {
         console.log("Applying ID gate to cat at", [x, y]);
-        return [clamp([x + 1, y], cols)];
+        newPositions = [clamp([x + 1, y], cols)];
       }
 
       // Gate X
       // Moves the cat to the right and changes the row
-      if (line === "qc.x(0)") {
+      else if (line === "qc.x(0)") {
         console.log("Applying X gate to cat at", [x, y]);
-         return [clamp([x + 1, y === 0 ? 1 : 0], cols)];
+        newPositions = [clamp([x + 1, y === 0 ? 1 : 0], cols)];
       }
 
       // Gate H
-      if (line === "qc.h(0)") {
-        if (catPositions.length === 1) {
+      else if (line === "qc.h(0)") {
+        if (cats.length === 1) {
           // Superposition: Cat is on both sides at the same time
-          return [
+          newPositions = [
             clamp([x + 1, y], cols),
             clamp([x + 1, y === 0 ? 1 : 0], cols),
           ];
         } else {
           // Collapse: If the cat is in superposition, it collapses to the state it was before
-          return y === catPositions[0][1] ? [clamp([x + 1, y], cols)] : [];
+          newPositions = y === cats[0][0][1] ? [clamp([x + 1, y], cols)] : [];
         }
       }
 
-      // Clamp position to map boundaries
-      return [clamp([x, y], cols)];
+      // When the line is a unknown command, we do not change the cat's position
+      else {
+        newPositions = [clamp([x, y], cols)];
+      }
+
+      // If there are waves, we need to check if the cat will be affected by them
+      if (waves) {
+        newPositions = newPositions.filter(([nx, ny]) => {
+          const wave = waves.find(([[wx, wy]]) => wx === nx && wy === ny);
+          if (!wave) return true; // No wave at the new position, cat is safe
+          return wave[1] === phase; // Cat is only affected if the wave phase matches the cat's phase
+        });
+      }
+
+      return newPositions.map(pos => [pos, phase] as PositionPhase);
     });
 
     // Check if the fishes were caught after each line
@@ -51,12 +67,12 @@ export function computeCatPosition(
       fishesCaught = fishesCaught.map((alreadyCaught, i) => {
         if (alreadyCaught) return true; // já apanhado antes, mantém
         const [fx, fy] = fishPositions[i];
-        return catPositions.some(([cx, cy]) => cx === fx && cy === fy);
+        return cats.some(([[cx, cy], _]) => cx === fx && cy === fy);
       });
     }
   }
 
-  return { catPositions, fishesCaught };
+  return { cats, fishesCaught };
 }
 
 export function isCatAtBox(catPositions: Position[], boxPositions: Position[]): boolean {
