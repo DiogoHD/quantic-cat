@@ -25,7 +25,7 @@ export function Map({ cols, cats, boxPositions, fishPositions, waves, fishesCaug
     : [];
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col px-4">
 
       {/* Victory Message */}
       {hasWon && (

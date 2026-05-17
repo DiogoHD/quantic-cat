@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { computeCatPosition, isCatAtBox } from "./services/catEngine";
 import type { PositionPhase, Position } from "./types/position";
 import { levels } from "./data/levels";
+import { PhaseBar } from "./components/PhaseBar";
 
 export default function App() {
   const [ current, setCurrent ] = useState(0);
@@ -46,11 +47,13 @@ export default function App() {
       {/* Right Side */}
       <div className="flex flex-1 flex-col bg-gray-800 items-center justify-center">
         {/* Title */}
-        <div className="mb-6 text-center">
+        <div className="mb-6 text-center px-4">
           <p className="text-3xl font-black tracking-[0.2em] uppercase text-amber-400">
             {levelMap.title}
           </p>
         </div>
+
+        {levelMap.wavePositions && <PhaseBar />}
 
         <Map 
           cols={levelMap.cols} 

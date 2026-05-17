@@ -111,10 +111,13 @@ export const levels = [
     description: (
       <>
         <p>
-          O gato está a sofrer uma estranha interferência! Existem ondas de interferência no caminho do gato, e o gato só pode atravessas essas ondas se for da mesma fase que a onda. Caso contrário, o gato é repelido para a coluna anterior.
+          O gato está a sofrer uma estranha interferência!
         </p>
         <p>
-          Neste jogo, ser da mesma fase significa ser da mesma cor. Assim, o gato só pode atravessar as ondas laranja, e é repelido pelas ondas rosa.
+          Existem ondas de interferência no caminho do gato. Cada onda tem uma fase, que é representada pela cor da onda: ondas laranja têm fase 0, e ondas rosa têm fase 270.
+        </p>
+        <p>
+          Assim, o gato não pode passar por ondas de fases diferentes da sua, isto é, o gato laranja só pode passar por ondas laranja, e o gato rosa só pode passar por ondas rosa.
         </p>
       </>
     )
