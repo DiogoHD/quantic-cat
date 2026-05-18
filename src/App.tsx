@@ -38,9 +38,9 @@ export default function App() {
 
 
   return (
-    <div className="min-h-screen w-screen flex text-white">
+    <div className="min-h-screen flex text-white">
       {/* Left Side */}
-      <div className="flex flex-1items-center justify-center overflow-y-auto">
+      <div className="flex flex-1 items-center justify-center overflow-y-auto">
         <Description current={current} setCurrent={setCurrent} code={code} setCode={setCode} completed={completed} />
       </div>
 

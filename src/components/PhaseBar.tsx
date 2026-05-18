@@ -14,7 +14,7 @@ export function PhaseBar() {
         ))}
       </div>
 
-      {/* Labels */}
+      {/* Lower Labels */}
       <div className="relative h-4">
         {wavesData.map((_, i) => (
           <div

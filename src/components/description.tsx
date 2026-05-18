@@ -127,9 +127,15 @@ export function Description({ current, setCurrent, code, setCode, completed }: L
           <div className="flex flex-1 min-h-0 p-3">
             <textarea
               value={code}
-              onChange={(e) => setCode(e.target.value)}
+              onChange={(e) => {
+                const lines = e.target.value.split("\n");
+                if (lines.length <= level.cols - 1) {
+                  setCode(e.target.value);
+                }
+              }}
               className="flex-1 bg-transparent outline-none resize-none text-amber-300 text-sm leading-6 placeholder:text-amber-900 caret-amber-400"
               placeholder="qc.id(0)"
+              rows={level.cols - 1}
               spellCheck={false}
             />
           </div>
