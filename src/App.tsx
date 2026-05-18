@@ -1,5 +1,5 @@
-import { Map } from "./components/map"
-import { Description } from "./components/description"
+import { Map } from "./components/Map"
+import { Description } from "./components/Description"
 import { useState, useEffect } from "react";
 import { computeCatPosition, isCatAtBox } from "./services/catEngine";
 import type { PositionPhase, Position } from "./types/position";

@@ -1,8 +1,8 @@
 import { Waves } from "lucide-react";
-import type { Phases } from "../types/phase";
+import type { Phase } from "../types/position";
 import wavesData from '../data/waves.json';
 
-export function Wave({ phase }: { phase: Phases }) {
+export function Wave({ phase }: { phase: Phase }) {
     const index = (phase / 45) % wavesData.length;
     const wave = wavesData[index];
 

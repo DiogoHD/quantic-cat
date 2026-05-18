@@ -1,4 +1,4 @@
-export { Cat } from "./cat";
-export { OpenBox, ClosedBox } from "./box";
-export { Fish } from "./fish";
-export { Wave } from "./waves";
+export { Cat } from "./Cat";
+export { OpenBox, ClosedBox } from "./Box";
+export { Fish } from "./Fish";
+export { Wave } from "./Wave";

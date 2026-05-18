@@ -1,7 +1,7 @@
 import catsData from '../data/cats.json';
-import type { Phases } from '../types/phase';
+import type { Phase } from "../types/position";
 
-export function Cat({ phase, eating }: { phase: Phases; eating: boolean }) {
+export function Cat({ phase, eating }: { phase: Phase; eating: boolean }) {
   const index = (phase / 45) % catsData.length;
   const cat = catsData[index];
   
