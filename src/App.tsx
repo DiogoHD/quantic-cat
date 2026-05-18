@@ -10,7 +10,7 @@ export default function App() {
   const [ current, setCurrent ] = useState(0);
   const [ code, setCode ] = useState("");
   // Track completed levels
-  const [completed, setCompleted] = useState<boolean[]>(() => levels.map(() => false));
+  const [ completed, setCompleted ] = useState<boolean[]>(() => levels.map(() => false));
 
   const levelMap = levels[current];
   const lines = code.split("\n").map(line => line.trim()).filter(line => line.length > 0);
@@ -47,13 +47,16 @@ export default function App() {
       {/* Right Side */}
       <div className="flex min-w-[50vw] w-fit flex-col bg-gray-800 items-center justify-center p-8">
         {/* Title */}
-        <div className="mb-6 text-center">
+        <div className="text-center">
           <p className="text-3xl font-black tracking-[0.2em] uppercase text-amber-400">
             {levelMap.title}
           </p>
         </div>
 
-        {levelMap.wavePositions && <PhaseBar />}
+        {levelMap.wavePositions && (
+          console.log("currentPhase:", cats[0][1]),
+          <PhaseBar currentPhase={cats[0][1]} />
+        )}
 
         <Map 
           cols={levelMap.cols} 
